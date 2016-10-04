@@ -1,8 +1,462 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<!--Edited using Gateway Setup Editor version GA3.7.0-160721 at 2016-09-27 17:31:27 by rgonzales on MNLP003-->
-<!-- Gateway-created setup include file for user MNL\rgonzales at 192.168.100.82 -->
-<gateway compatibility="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://schema.itrsgroup.com/GA3.7.0-160603/gateway.xsd">
+<!--Edited using Gateway Setup Editor version GA3.7.0-160721 at 2016-09-29 16:11:30 by rgonzales on MNLP003-->
+<!-- Gateway-created setup include file for user MNL\rgonzales at 192.168.100.128 -->
+<gateway compatibility="1" xsi:noNamespaceSchemaLocation="http://schema.itrsgroup.com/GA3.7.0-160603/gateway.xsd">
+	<managedEntities>
+		<managedEntityGroup name="TLM Derivatives">
+			<attribute name="ENVIRONMENT">PROD</attribute>
+			<attribute name="REGION">EMEA</attribute>
+			<attribute name="LOB">Cross Business Services</attribute>
+			<attribute name="SUBLOB">RECS</attribute>
+			<attribute name="ENTITY_GROUP">Application</attribute>
+			<attribute name="APPLICATION">TLM Derivatives_32535</attribute>
+			<attribute name="SEAL_ID">32535</attribute>
+			<attribute name="CQ_APP">TLM Derivatives</attribute>
+			<attribute name="CATEGORY">PROCESS</attribute>
+			<attribute name="PRIORITY">4</attribute>
+			<attribute name="ACE_NONACE">NONACE</attribute>
+			<attribute name="CAF_NONCAF">NONCAF</attribute>
+			<attribute name="ESCALATION_TYPE">GENEOS</attribute>
+			<managedEntityGroup name="PROCESS">
+				<attribute name="COMPONENT">PROCESS</attribute>
+				<attribute name="CATEGORY">PROCESS</attribute>
+				<managedEntityGroup name="EMEA">
+					<managedEntity name="PROCESS_TLM_Deriv_AppMon">
+						<probe ref="NP64 LAWIN 6370"/>
+						<sampler ref="TLM_TCPP07_EngineMon"/>
+						<sampler disabled="false" ref="TLM_TCPP48_EngineMon"/>
+						<sampler disabled="false" ref="TLM_TIBP01_EngineMon"/>
+					</managedEntity>
+				</managedEntityGroup>
+			</managedEntityGroup>
+			<managedEntityGroup disabled="true" name="INFRA">
+				<attribute name="COMPONENT">INFRA</attribute>
+				<attribute name="CATEGORY">INFRA</attribute>
+				<managedEntityGroup name="EMEA">
+					<managedEntity name="INFRA_FileSystem_on_embahl192">
+						<probe ref="embahl192_tlmderiv"/>
+						<addTypes>
+							<type ref="FileSystem_on_embahl192"/>
+						</addTypes>
+					</managedEntity>
+					<managedEntity name="INFRA_FileSystem_on_embchl020">
+						<probe ref="embchl020_tlmderiv"/>
+						<addTypes>
+							<type ref="FileSystem_on_embchl020"/>
+						</addTypes>
+					</managedEntity>
+					<managedEntity name="INFRA_FileSystem_on_embchl021">
+						<probe ref="embchl021_tlmderiv"/>
+						<addTypes>
+							<type ref="FileSystem_on_embchl021"/>
+						</addTypes>
+					</managedEntity>
+					<managedEntity name="INFRA_FileSystem_on_emrdhl020">
+						<probe ref="emrdhl020_tlmderiv"/>
+						<addTypes>
+							<type ref="FileSystem_on_emrdhl020"/>
+						</addTypes>
+					</managedEntity>
+					<managedEntity name="INFRA_FileSystem_on_emrdhl021">
+						<probe ref="emrdhl021_tlmderiv"/>
+						<addTypes>
+							<type ref="FileSystem_on_emrdhl021"/>
+						</addTypes>
+					</managedEntity>
+				</managedEntityGroup>
+			</managedEntityGroup>
+		</managedEntityGroup>
+	</managedEntities>
 	<samplers>
-		<sampler name="test"/>
+		<sampler name="TLM_TCPP07_EngineMon">
+			<sampleInterval>
+				<data>300</data>
+			</sampleInterval>
+			<plugin>
+				<processes>
+					<processes>
+						<process>
+							<processDescriptor ref="TLM_Deriv_gems_tcpp07"/>
+						</process>
+						<process>
+							<processDescriptor ref="TLM_deriv_advarc_tcpp07"/>
+						</process>
+						<process>
+							<processDescriptor ref="TLM_deriv_worfklow_tcpp07"/>
+						</process>
+						<process>
+							<processDescriptor ref="TLM_Deriv_queries_tcpp07"/>
+						</process>
+						<process>
+							<processDescriptor ref="TLM_Deriv_report_tcpp07"/>
+						</process>
+						<process>
+							<processDescriptor ref="TLM_deriv_schedule_tcpp07"/>
+						</process>
+						<process>
+							<processDescriptor ref="TLM_Deriv_stlfetch_tcpp07"/>
+						</process>
+						<process>
+							<processDescriptor ref="TLM_deriv_currency_tcpp07"/>
+						</process>
+						<process>
+							<processDescriptor ref="TLM_deriv_transmit_tcpp07"/>
+						</process>
+						<process>
+							<processDescriptor ref="TLM_deriv_stocks_tcpp07"/>
+						</process>
+					</processes>
+				</processes>
+			</plugin>
+			<activeTimes>
+				<activeTime>
+					<activeTime ref="Test Active Time sampler"/>
+				</activeTime>
+			</activeTimes>
+		</sampler>
+		<sampler name="TLM_TCPP48_EngineMon">
+			<sampleInterval>
+				<data>300</data>
+			</sampleInterval>
+			<plugin>
+				<processes>
+					<processes>
+						<process>
+							<processDescriptor ref="TLM_Deriv_gems_tcpp48"/>
+						</process>
+						<process>
+							<processDescriptor ref="TLM_deriv_advarc_tcpp48"/>
+						</process>
+						<process>
+							<processDescriptor ref="TLM_deriv_worfklow_tcpp48"/>
+						</process>
+						<process>
+							<processDescriptor ref="TLM_Deriv_queries_tcpp48"/>
+						</process>
+						<process>
+							<processDescriptor ref="TLM_Deriv_report_tcpp48"/>
+						</process>
+						<process>
+							<processDescriptor ref="TLM_deriv_schedule_tcpp48"/>
+						</process>
+						<process>
+							<processDescriptor ref="TLM_Deriv_stlfetch_tcpp48"/>
+						</process>
+						<process>
+							<processDescriptor ref="TLM_deriv_currency_tcpp48"/>
+						</process>
+						<process>
+							<processDescriptor ref="TLM_deriv_transmit_tcpp48"/>
+						</process>
+						<process>
+							<processDescriptor ref="TLM_deriv_stocks_tcpp48"/>
+						</process>
+					</processes>
+				</processes>
+			</plugin>
+			<activeTimes>
+				<activeTime>
+					<activeTime ref="Test Active Time sampler"/>
+				</activeTime>
+			</activeTimes>
+		</sampler>
+		<sampler name="TLM_TIBP01_EngineMon">
+			<sampleInterval>
+				<data>300</data>
+			</sampleInterval>
+			<plugin>
+				<processes>
+					<processes>
+						<process>
+							<processDescriptor ref="TLM_Deriv_gems_TIBP01"/>
+						</process>
+						<process>
+							<processDescriptor ref="TLM_deriv_advarc_TIBP01"/>
+						</process>
+						<process>
+							<processDescriptor ref="TLM_deriv_worfklow_TIBP01"/>
+						</process>
+						<process>
+							<processDescriptor ref="TLM_Deriv_queries_TIBP01"/>
+						</process>
+						<process>
+							<processDescriptor ref="TLM_deriv_schedule_TIBP01"/>
+						</process>
+						<process>
+							<processDescriptor ref="TLM_Deriv_stlfetch_TIBP01"/>
+						</process>
+					</processes>
+				</processes>
+			</plugin>
+			<activeTimes>
+				<activeTime>
+					<activeTime ref="Test Active Time sampler"/>
+				</activeTime>
+			</activeTimes>
+		</sampler>
 	</samplers>
+	<staticVars>
+		<processDescriptors>
+			<processDescriptor name="TLM_Deriv_gems_tcpp07">
+				<alias>
+					<data>TLM_Deriv_gems_tcpp07</data>
+				</alias>
+				<ID>
+					<searchString>
+						<data>gems TCPP07 TCPP07</data>
+					</searchString>
+				</ID>
+			</processDescriptor>
+			<processDescriptor name="TLM_deriv_advarc_tcpp07">
+				<alias>
+					<data>TLM_deriv_advarc_tcpp07</data>
+				</alias>
+				<ID>
+					<searchString>
+						<data>advarc TCPP07 TCPP07</data>
+					</searchString>
+				</ID>
+			</processDescriptor>
+			<processDescriptor name="TLM_deriv_worfklow_tcpp07">
+				<alias>
+					<data>TLM_deriv_worfklow_tcpp07</data>
+				</alias>
+				<ID>
+					<searchString>
+						<data>workflow TCPP07 TCPP07</data>
+					</searchString>
+				</ID>
+			</processDescriptor>
+			<processDescriptor name="TLM_Deriv_queries_tcpp07">
+				<alias>
+					<data>TLM_Deriv_queries_tcpp07</data>
+				</alias>
+				<ID>
+					<searchString>
+						<data>queries TCPP07 TCPP07</data>
+					</searchString>
+				</ID>
+			</processDescriptor>
+			<processDescriptor name="TLM_Deriv_report_tcpp07">
+				<alias>
+					<data>TLM_Deriv_report_tcpp07</data>
+				</alias>
+				<ID>
+					<searchString>
+						<data>report_d TCPP07 TCPP07</data>
+					</searchString>
+				</ID>
+			</processDescriptor>
+			<processDescriptor name="TLM_deriv_schedule_tcpp07">
+				<alias>
+					<data>TLM_deriv_schedule_tcpp07</data>
+				</alias>
+				<ID>
+					<searchString>
+						<data>schedule TCPP07 TCPP07</data>
+					</searchString>
+				</ID>
+			</processDescriptor>
+			<processDescriptor name="TLM_Deriv_stlfetch_tcpp07">
+				<alias>
+					<data>TLM_Deriv_stlfetch_tcpp07</data>
+				</alias>
+				<ID>
+					<searchString>
+						<data>stlfetch TCPP07 TCPP07</data>
+					</searchString>
+				</ID>
+			</processDescriptor>
+			<processDescriptor name="TLM_deriv_currency_tcpp07">
+				<alias>
+					<data>TLM_deriv_currency_tcpp07</data>
+				</alias>
+				<ID>
+					<searchString>
+						<data>currency TCPP07 TCPP07</data>
+					</searchString>
+				</ID>
+			</processDescriptor>
+			<processDescriptor name="TLM_deriv_transmit_tcpp07">
+				<alias>
+					<data>TLM_deriv_transmit_tcpp07</data>
+				</alias>
+				<ID>
+					<searchString>
+						<data>transmit TCPP07 TCPP07</data>
+					</searchString>
+				</ID>
+			</processDescriptor>
+			<processDescriptor name="TLM_deriv_stocks_tcpp07">
+				<alias>
+					<data>TLM_deriv_stocks_tcpp07</data>
+				</alias>
+				<ID>
+					<searchString>
+						<data>stocks TCPP07 TCPP07</data>
+					</searchString>
+				</ID>
+			</processDescriptor>
+			<processDescriptor name="TLM_Deriv_gems_tcpp48">
+				<alias>
+					<data>TLM_Deriv_gems_tcpp48</data>
+				</alias>
+				<ID>
+					<searchString>
+						<data>gems TCPP48 TCPP48</data>
+					</searchString>
+				</ID>
+			</processDescriptor>
+			<processDescriptor name="TLM_deriv_advarc_tcpp48">
+				<alias>
+					<data>TLM_deriv_advarc_tcpp48</data>
+				</alias>
+				<ID>
+					<searchString>
+						<data>advarc TCPP48 TCPP48</data>
+					</searchString>
+				</ID>
+			</processDescriptor>
+			<processDescriptor name="TLM_deriv_worfklow_tcpp48">
+				<alias>
+					<data>TLM_deriv_worfklow_tcpp48</data>
+				</alias>
+				<ID>
+					<searchString>
+						<data>workflow TCPP48 TCPP48</data>
+					</searchString>
+				</ID>
+			</processDescriptor>
+			<processDescriptor name="TLM_Deriv_queries_tcpp48">
+				<alias>
+					<data>TLM_Deriv_queries_tcpp48</data>
+				</alias>
+				<ID>
+					<searchString>
+						<data>queries TCPP48 TCPP48</data>
+					</searchString>
+				</ID>
+			</processDescriptor>
+			<processDescriptor name="TLM_Deriv_report_tcpp48">
+				<alias>
+					<data>TLM_Deriv_report_tcpp48</data>
+				</alias>
+				<ID>
+					<searchString>
+						<data>report_d TCPP48 TCPP48</data>
+					</searchString>
+				</ID>
+			</processDescriptor>
+			<processDescriptor name="TLM_deriv_schedule_tcpp48">
+				<alias>
+					<data>TLM_deriv_schedule_tcpp48</data>
+				</alias>
+				<ID>
+					<searchString>
+						<data>schedule TCPP48 TCPP48</data>
+					</searchString>
+				</ID>
+			</processDescriptor>
+			<processDescriptor name="TLM_Deriv_stlfetch_tcpp48">
+				<alias>
+					<data>TLM_Deriv_stlfetch_tcpp48</data>
+				</alias>
+				<ID>
+					<searchString>
+						<data>stlfetch TCPP48 TCPP48</data>
+					</searchString>
+				</ID>
+			</processDescriptor>
+			<processDescriptor name="TLM_deriv_currency_tcpp48">
+				<alias>
+					<data>TLM_deriv_currency_tcpp48</data>
+				</alias>
+				<ID>
+					<searchString>
+						<data>currency TCPP48 TCPP48</data>
+					</searchString>
+				</ID>
+			</processDescriptor>
+			<processDescriptor name="TLM_deriv_transmit_tcpp48">
+				<alias>
+					<data>TLM_deriv_transmit_tcpp48</data>
+				</alias>
+				<ID>
+					<searchString>
+						<data>transmit TCPP48 TCPP48</data>
+					</searchString>
+				</ID>
+			</processDescriptor>
+			<processDescriptor name="TLM_deriv_stocks_tcpp48">
+				<alias>
+					<data>TLM_deriv_stocks_tcpp48</data>
+				</alias>
+				<ID>
+					<searchString>
+						<data>stocks TCPP48 TCPP48</data>
+					</searchString>
+				</ID>
+			</processDescriptor>
+			<processDescriptor name="TLM_Deriv_gems_TIBP01">
+				<alias>
+					<data>TLM_Deriv_gems_TIBP01</data>
+				</alias>
+				<ID>
+					<searchString>
+						<data>gems TIBP01 TIBP01</data>
+					</searchString>
+				</ID>
+			</processDescriptor>
+			<processDescriptor name="TLM_deriv_advarc_TIBP01">
+				<alias>
+					<data>TLM_deriv_advarc_TIBP01</data>
+				</alias>
+				<ID>
+					<searchString>
+						<data>advarc TIBP01 TIBP01</data>
+					</searchString>
+				</ID>
+			</processDescriptor>
+			<processDescriptor name="TLM_deriv_worfklow_TIBP01">
+				<alias>
+					<data>TLM_deriv_worfklow_TIBP01</data>
+				</alias>
+				<ID>
+					<searchString>
+						<data>workflow TIBP01 TIBP01</data>
+					</searchString>
+				</ID>
+			</processDescriptor>
+			<processDescriptor name="TLM_Deriv_queries_TIBP01">
+				<alias>
+					<data>TLM_Deriv_queries_TIBP01</data>
+				</alias>
+				<ID>
+					<searchString>
+						<data>queries TIBP01 TIBP01</data>
+					</searchString>
+				</ID>
+			</processDescriptor>
+			<processDescriptor name="TLM_deriv_schedule_TIBP01">
+				<alias>
+					<data>TLM_deriv_schedule_TIBP01</data>
+				</alias>
+				<ID>
+					<searchString>
+						<data>schedule TIBP01 TIBP01</data>
+					</searchString>
+				</ID>
+			</processDescriptor>
+			<processDescriptor name="TLM_Deriv_stlfetch_TIBP01">
+				<alias>
+					<data>TLM_Deriv_stlfetch_TIBP01</data>
+				</alias>
+				<ID>
+					<searchString>
+						<data>stlfetch TIBP01 TIBP01</data>
+					</searchString>
+				</ID>
+			</processDescriptor>
+		</processDescriptors>
+	</staticVars>
 </gateway>
